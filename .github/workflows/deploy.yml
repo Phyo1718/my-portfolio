@@ -24,6 +24,11 @@ jobs:
       - name: Build and Export
         run: npm run predeploy
 
+      - name: Set up Git user
+        run: |
+          git config --global user.name "Phyo1718"
+          git config --global user.email "phyowailin1718@gmail.com"
+
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
