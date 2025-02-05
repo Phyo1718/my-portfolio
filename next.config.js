@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  basePath: '',
+  basePath: '/my-portfolio',
+  assetPrefix: '/my-portfolio/',
   images: {
     unoptimized: true,  // Add this line
   },
