@@ -111,30 +111,30 @@ const Skills = () => {
           </div>
           <div className='grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6'>
             <div className='flex items-center space-x-3'>
-                <FiUsers size={25} className='text-primary-500' />
-                <span className='text-lg font-semibold'>Teamwork</span>
+              <FiUsers size={25} className='text-primary-500' />
+              <span className='text-lg font-semibold'>Teamwork</span>
             </div>
             <div className='flex items-center space-x-3'>
-                <FiTarget size={25} className='text-primary-500' />
-                <span className='text-lg font-semibold'>Problem-Solving</span>
+              <FiTarget size={25} className='text-primary-500' />
+              <span className='text-lg font-semibold'>Problem-Solving</span>
             </div>
             <div className='flex items-center space-x-3'>
-                <FiTrendingUp size={25} className='text-primary-500' />
-                <span className='text-lg font-semibold'>Adaptability</span>
+              <FiTrendingUp size={25} className='text-primary-500' />
+              <span className='text-lg font-semibold'>Adaptability</span>
             </div>
             <div className='flex items-center space-x-3'>
-                <FiMessageCircle size={25} className='text-primary-500' />
-                <span className='text-lg font-semibold'>Communication</span>
+              <FiMessageCircle size={25} className='text-primary-500' />
+              <span className='text-lg font-semibold'>Communication</span>
             </div>
             <div className='flex items-center space-x-3'>
-                <FiLayers size={25} className='text-primary-500' />
-                <span className='text-lg font-semibold'>Collaboration</span>
+              <FiLayers size={25} className='text-primary-500' />
+              <span className='text-lg font-semibold'>Collaboration</span>
             </div>
             <div className='flex items-center space-x-3'>
-                <HiLightBulb size={25} className='text-primary-500' />
-                <span className='text-lg font-semibold'>Creativity</span>
+              <HiLightBulb size={25} className='text-primary-500' />
+              <span className='text-lg font-semibold'>Creativity</span>
             </div>
-        </div>
+          </div>
         </div>
       </div>
     </>
