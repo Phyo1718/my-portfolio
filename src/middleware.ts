@@ -21,19 +21,10 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/', req.url)); // Redirect to homepage
   }
   return NextResponse.next();
-
-
-//   const allowedPaths = ['/projects']
-//   console.log('Current path:', req.nextUrl.pathname); // Add this log
-  
-//   if (allowedPaths.includes(req.nextUrl.pathname)) {
-//     return NextResponse.next();
-//   }
-//   return NextResponse.redirect(new URL('/', req.url)); // Redirect to homepage
 }
 
 // Apply to all routes
 export const config = {
 //   matcher: ['/contact', '/projects', '/hidden'], // Same paths as blockedPaths
-matcher: '/:path*'  // Matches all paths
+  matcher: '/:path*'  // Matches all paths
 };

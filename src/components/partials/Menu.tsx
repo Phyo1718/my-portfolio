@@ -13,44 +13,54 @@ const Menu = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    // <header className="header text-gray-700 dark:text-gray-200">
-    <header className="fixed top-0 left-0 w-full backdrop-blur-md bg-white/70 dark:bg-gray-800/80 shadow-md z-50 text-gray-700 dark:text-gray-200 transition-all duration-300">
-      <div className="mx-auto flex h-16 max-w-7xl items-center px-4 md:px-6">
-        <Link href="/">
-          <a className="text-3xl  font-bold">
+    // <header className='header text-gray-700 dark:text-gray-200'>
+    <header className='fixed top-0 left-0 w-full backdrop-blur-md bg-white/70 dark:bg-gray-800/80 shadow-md z-50 text-gray-700 dark:text-gray-200 transition-all duration-300'>
+      <div className='mx-auto flex h-16 max-w-7xl items-center px-4 md:px-6'>
+        <Link href='/'>
+          <a className='text-3xl  font-bold'>
             <span>Phyo Wai Lin</span>
-            <span className="text-primary-500">.</span>
+            <span className='text-primary-500'>.</span>
           </a>
         </Link>
         
-        <ul className="ml-auto hidden items-center md:flex">
+        <ul className='ml-auto hidden items-center md:flex'>
           <li>
-            <a href="/#about" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              About
-            </a>
+            <Link href='/#about'>
+              <a className='inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline'>
+                About
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="/#skills" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Skills
-            </a>
+            <Link href='/#skills'>
+              <a className='inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline'>
+                Skills
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="/#education" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Education
-            </a>
+            <Link href='/#education'>
+              <a className='inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline'>
+                Education
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="/#projects" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Projects
-            </a>
+            <Link href='/#projects'>
+              <a className='inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline'>
+                Projects
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="/#contact" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Contact
-            </a>
+            <Link href='/#contact'>
+              <a className='inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline'>
+                Contact
+              </a>
+            </Link>
           </li>
           {/* <li>
-            <Link href="/works">
+            <Link href='/works'>
               <a
                 className={classNames(
                   'inline-block px-4 font-semibold  transition-colors duration-300 hover:text-primary-600 hover:underline',
@@ -64,7 +74,7 @@ const Menu = () => {
             </Link>
           </li> */}
           {/* <li>
-            <Link href="/blog">
+            <Link href='/blog'>
               <a
                 className={classNames(
                   'inline-block px-4 font-semibold  transition-colors duration-150 hover:text-primary-600 hover:underline',
@@ -78,7 +88,7 @@ const Menu = () => {
             </Link>
           </li> */}
           {/* <li>
-            <Link href="/contact">
+            <Link href='/contact'>
               <a
                 className={classNames(
                   'inline-block px-4 font-semibold  transition-colors duration-150 hover:text-primary-600 hover:underline',
@@ -93,16 +103,16 @@ const Menu = () => {
           </li> */}
         </ul>
         <button
-          type="button"
-          className="ml-auto transition-colors duration-150 hover:text-primary-500 md:-mt-0.5 md:ml-3"
+          type='button'
+          className='ml-auto transition-colors duration-150 hover:text-primary-500 md:-mt-0.5 md:ml-3'
           onClick={() => toggleTheme()}
         >
           {theme === Theme.LIGHT ? <BsMoonStars size={20} /> : <BsSun size={20} />}
         </button>
         <button
-          type="button"
+          type='button'
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="ml-5 flex text-gray-700 dark:text-gray-200 md:hidden"
+          className='ml-5 flex text-gray-700 dark:text-gray-200 md:hidden'
         >
           <HiMenuAlt3 size={24} />
         </button>
@@ -110,58 +120,58 @@ const Menu = () => {
 
       {/* Mobile menu */}
       <Transition.Root show={sidebarOpen} as={Fragment}>
-        <Dialog as="div" className="fixed inset-0 z-40 flex md:hidden" onClose={setSidebarOpen}>
+        <Dialog as='div' className='fixed inset-0 z-40 flex md:hidden' onClose={setSidebarOpen}>
           <Transition.Child
             as={Fragment}
-            enter="transition-opacity ease-linear duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter='transition-opacity ease-linear duration-300'
+            enterFrom='opacity-0'
+            enterTo='opacity-100'
+            leave='transition-opacity ease-linear duration-300'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0'
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75" />
+            <Dialog.Overlay className='fixed inset-0 bg-gray-600 bg-opacity-75' />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
-            enter="transition ease-in-out duration-300 transform origin-right"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-300 transform origin-right"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
+            enter='transition ease-in-out duration-300 transform origin-right'
+            enterFrom='-translate-x-full'
+            enterTo='translate-x-0'
+            leave='transition ease-in-out duration-300 transform origin-right'
+            leaveFrom='translate-x-0'
+            leaveTo='-translate-x-full'
           >
-            <div className="relative flex h-full w-full max-w-xs flex-1 flex-col bg-[#f9f9ff] pt-5 dark:bg-gray-800">
+            <div className='relative flex h-full w-full max-w-xs flex-1 flex-col bg-[#f9f9ff] pt-5 dark:bg-gray-800'>
               <Transition.Child
                 as={Fragment}
-                enter="ease-in-out duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="ease-in-out duration-300"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+                enter='ease-in-out duration-300'
+                enterFrom='opacity-0'
+                enterTo='opacity-100'
+                leave='ease-in-out duration-300'
+                leaveFrom='opacity-100'
+                leaveTo='opacity-0'
               >
-                <div className="absolute top-0 right-0 -mr-12 pt-2">
+                <div className='absolute top-0 right-0 -mr-12 pt-2'>
                   <button
-                    type="button"
-                    className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    type='button'
+                    className='ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
                     onClick={() => setSidebarOpen(false)}
                   >
-                    <span className="text-white">&#10006;</span>
+                    <span className='text-white'>&#10006;</span>
                   </button>
                 </div>
               </Transition.Child>
-              <div className="flex h-full flex-col overflow-y-auto">
-                <div className="border-b px-2 pb-4 dark:border-gray-700">
-                  <Link href="/">
-                    <a className="text-3xl  font-bold">
+              <div className='flex h-full flex-col overflow-y-auto'>
+                <div className='border-b px-2 pb-4 dark:border-gray-700'>
+                  <Link href='/'>
+                    <a className='text-3xl  font-bold'>
                       <span>Phyo Wai Lin</span>
-                      <span className="text-primary-500">.</span>
+                      <span className='text-primary-500'>.</span>
                     </a>
                   </Link>
                 </div>
-                <nav className="mt-4 space-y-1 px-2">
-                  <Link href="/#about">
+                <nav className='mt-4 space-y-1 px-2'>
+                  <Link href='/#about'>
                     <a
                       onClick={() => setSidebarOpen(false)}
                       className={classNames(
@@ -172,7 +182,7 @@ const Menu = () => {
                       About
                     </a>
                   </Link>
-                  <Link href="/#skills">
+                  <Link href='/#skills'>
                     <a
                       onClick={() => setSidebarOpen(false)}
                       className={classNames(
@@ -183,7 +193,7 @@ const Menu = () => {
                       Skills
                     </a>
                   </Link>
-                  <Link href="/#education">
+                  <Link href='/#education'>
                     <a
                       onClick={() => setSidebarOpen(false)}
                       className={classNames(
@@ -194,7 +204,7 @@ const Menu = () => {
                       Education
                     </a>
                   </Link>
-                  <Link href="/#projects">
+                  <Link href='/#projects'>
                     <a
                       onClick={() => setSidebarOpen(false)}
                       className={classNames(
@@ -205,7 +215,7 @@ const Menu = () => {
                       Projects
                     </a>
                   </Link>
-                  <Link href="/#contact">
+                  <Link href='/#contact'>
                     <a
                       onClick={() => setSidebarOpen(false)}
                       className={classNames(
@@ -220,7 +230,7 @@ const Menu = () => {
               </div>
             </div>
           </Transition.Child>
-          <div className="w-14 flex-shrink-0" aria-hidden="true">
+          <div className='w-14 flex-shrink-0' aria-hidden='true'>
             {/* Dummy element to force sidebar to shrink to fit close icon */}
           </div>
         </Dialog>
