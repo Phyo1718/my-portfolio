@@ -8,6 +8,7 @@ import RecentComment from '@/components/partials/RecentComment';
 import { Post } from '@/types';
 import { GetServerSideProps } from 'next';
 import { posts } from '@/data/posts';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 type Props = {
   post: Post;
@@ -69,19 +70,44 @@ const BlogSingle: React.FunctionComponent<Props> = ({ post }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const id = context.params?.id as string;
-  const post = posts.find((post) => post.id === Number(id));
-  if (post) {
-    return {
-      props: {
-        post,
-      },
-    };
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const id = context.params?.id as string;
+//   const post = posts.find((post) => post.id === Number(id));
+//   if (post) {
+//     return {
+//       props: {
+//         post,
+//       },
+//     };
+//   }
+
+//   return {
+//     notFound: true,
+//   };
+// };
+
+// Generate paths for all blog posts
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = posts.map((post) => ({
+    params: { id: post.id.toString() }, // Convert ID to string for dynamic routing
+  }));
+
+  return {
+    paths,
+    fallback: false, // Change to 'blocking' if you need dynamic pages at runtime
+  };
+};
+
+// Fetch data for each blog post at build time
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const post = posts.find((post) => post.id.toString() === params?.id);
+
+  if (!post) {
+    return { notFound: true };
   }
 
   return {
-    notFound: true,
+    props: { post },
   };
 };
 

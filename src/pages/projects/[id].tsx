@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Slider, { Settings } from 'react-slick';
 import { useRouter } from 'next/router';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 const settings: Settings = {
   dots: false,
@@ -143,18 +144,57 @@ const WorkDetail: React.FunctionComponent<Props> = ({ work }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const id = context.params?.id as string;
-  const work = works.find((work) => work.id === Number(id));
-  if (work) {
-    return {
-      props: {
-        work,
-      },
-    };
-  }
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const id = context.params?.id as string;
+//   const work = works.find((work) => work.id === Number(id));
+//   if (work) {
+//     return {
+//       props: {
+//         work,
+//       },
+//     };
+//   }
+//   return {
+//     notFound: true,
+//   };
+// };
+
+// Generate static paths for all works
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = works.map((work) => ({
+    params: { id: work.id.toString() },
+  }));
+
   return {
-    notFound: true,
+    paths,
+    fallback: true, // Enables incremental static regeneration (ISR)
   };
 };
+
+// Fetch data for a specific project at build time
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id as string;
+  const work = works.find((work) => work.id === Number(id));
+
+  if (!work) {
+    return { notFound: true };
+  }
+
+  return {
+    props: {
+      work: {
+        ...work,
+        description: work.description || '',
+        images: work.images || [],
+        publishedAt: work.publishedAt || '',
+        previewUrl: work.previewUrl || '',
+        videos: work.videos || [],
+        featureList: work.featureList || [],
+        attributes: work.attributes || [],
+      },
+    },
+    revalidate: 10, // Enables ISR (Regenerates page every 10 seconds)
+  };
+};
+
 export default WorkDetail;
