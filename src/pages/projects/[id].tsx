@@ -23,6 +23,9 @@ type Props = {
     images: string[];
     publishedAt: string;
     previewUrl: string;
+    videos: string[];
+    featureList: string[];
+    attributes: { name: string; value: string }[];
   };
 };
 
@@ -161,40 +164,59 @@ const WorkDetail: React.FunctionComponent<Props> = ({ work }) => {
 
 // Generate static paths for all works
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = works.map((work) => ({
-    params: { id: work.id.toString() },
-  }));
+  try {
+    const paths = works.map((work) => ({
+      params: { id: work.id.toString() },
+    }));
 
-  return {
-    paths,
-    fallback: true, // Enables incremental static regeneration (ISR)
-  };
+    return {
+      paths,
+      fallback: 'blocking', // Use 'blocking' instead of true
+    };
+  } catch (error) {
+    console.error('Error in getStaticPaths:', error);
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
 };
 
 // Fetch data for a specific project at build time
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id as string;
-  const work = works.find((work) => work.id === Number(id));
+  try {
+    const id = context.params?.id as string;
+    const work = works.find((work) => work.id === Number(id));
 
-  if (!work) {
-    return { notFound: true };
-  }
+    if (!work) {
+      return { 
+        notFound: true,
+        revalidate: 10,
+      };
+    }
 
-  return {
-    props: {
-      work: {
-        ...work,
-        description: work.description || '',
-        images: work.images || [],
-        publishedAt: work.publishedAt || '',
-        previewUrl: work.previewUrl || '',
-        videos: work.videos || [],
-        featureList: work.featureList || [],
-        attributes: work.attributes || [],
+    return {
+      props: {
+        work: {
+          ...work,
+          description: work.description || '',
+          images: work.images || [],
+          publishedAt: work.publishedAt || '',
+          previewUrl: work.previewUrl || '',
+          videos: work.videos || [],
+          featureList: work.featureList || [],
+          attributes: work.attributes || [],
+        },
       },
-    },
-    revalidate: 10, // Enables ISR (Regenerates page every 10 seconds)
-  };
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error('Error in getStaticProps:', error);
+    return {
+      notFound: true,
+      revalidate: 10,
+    };
+  }
 };
 
 export default WorkDetail;
