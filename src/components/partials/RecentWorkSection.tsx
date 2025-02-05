@@ -16,7 +16,7 @@ const RecentWorkSection = () => {
               imageUrl={work.thumbnailUrl}
               category={work.category}
               title={work.title}
-              href={`/projects/${work.id}`}
+              href={`/my-portfolio/projects/${work.id}`}
             />
           ))}
       </div>

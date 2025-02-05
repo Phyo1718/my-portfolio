@@ -16,7 +16,7 @@ const Menu = () => {
     // <header className='header text-gray-700 dark:text-gray-200'>
     <header className='fixed top-0 left-0 w-full backdrop-blur-md bg-white/70 dark:bg-gray-800/80 shadow-md z-50 text-gray-700 dark:text-gray-200 transition-all duration-300'>
       <div className='mx-auto flex h-16 max-w-7xl items-center px-4 md:px-6'>
-        <Link href='/'>
+        <Link href='/my-portfolio/'>
           <a className='text-3xl  font-bold'>
             <span>Phyo Wai Lin</span>
             <span className='text-primary-500'>.</span>

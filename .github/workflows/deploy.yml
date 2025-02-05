@@ -2,36 +2,46 @@ name: Deploy Next.js to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
 
 permissions:
-  contents: write  # Explicitly grant write permissions to the GitHub Actions workflow
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/checkout@v3
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '18'
-
+          node-version: "16"
+          cache: 'npm'
+      
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-
+      
       - name: Build
-        run: npm run build
-
-      - name: Export
-        run: npm run export
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        run: |
+          npm run build
+          npm run export
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          folder: out
-          branch: gh-pages
+          path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
