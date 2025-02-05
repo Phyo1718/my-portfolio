@@ -45,7 +45,7 @@ const ContactSection = () => {
       <ToastContainer position='top-right' />
       <div className='mt-14 grid gap-6 md:grid-cols-3'>
         <div className='relative h-48'>
-          <Image src='/images/map.svg' layout='fill' className='dark:invert' alt='map' />
+          <Image src='/my-portfolio/images/map.svg' layout='fill' className='dark:invert' alt='map' />
           <h6 className='text-2xl font-bold'>Contact with me</h6>
           <p className='mt-2'>I would love to hear from you. 👋</p>
           <div className='mt-10 text-gray-400'>
