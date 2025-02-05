@@ -26,7 +26,7 @@ jobs:
 
       - name: Set up Git user
         run: |
-          git config --global user.name "Phyo Wai Lin"
+          git config --global user.name "phyo1718"
           git config --global user.email "phyowailin1718@gmail.com"
 
       - name: Deploy to GitHub Pages
