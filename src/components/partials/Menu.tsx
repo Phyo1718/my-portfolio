@@ -25,29 +25,39 @@ const Menu = () => {
         
         <ul className='ml-auto hidden items-center md:flex'>
           <li>
-            <a href="#about" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              About
-            </a>
+            <Link href="/#about" scroll={false}>
+              <a className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+                About
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="#skills" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Skills
-            </a>
+            <Link href="/#skills" scroll={false}>
+              <a className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+                Skills
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="#education" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Education
-            </a>
+            <Link href="/#education" scroll={false}>
+              <a className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+                Education
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="#projects" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Projects
-            </a>
+            <Link href="/#projects" scroll={false}>
+              <a className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+                Projects
+              </a>
+            </Link>
           </li>
           <li>
-            <a href="#contact" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
-              Contact
-            </a>
+            <Link href="/#contact" scroll={false}>
+              <a className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+                Contact
+              </a>
+            </Link>
           </li>
           {/* <li>
             <Link href='/#about'>

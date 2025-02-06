@@ -10,12 +10,33 @@ import TestimonialSection from '@/components/partials/TestimonialSection';
 import AppLayout from '@/layouts/AppLayout';
 import { api } from '@/lib/api';
 import type { GetServerSideProps, NextPage } from 'next';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 // type Props = {
 //   experiences: ;
 // }
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if there's a hash in the URL (e.g., #about)
+    if (router.asPath.includes('#')) {
+      // Extract the hash from the URL
+      const hash = router.asPath.split('#')[1];
+      
+      // Find the element with the ID matching the hash and scroll to it
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',  // Scroll smoothly
+          block: 'start',      // Align at the start of the section
+        });
+      }
+    }
+  }, [router.asPath]);
+  
   return (
     <AppLayout title="">
       <HeroSection />
