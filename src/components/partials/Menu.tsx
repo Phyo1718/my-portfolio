@@ -25,6 +25,31 @@ const Menu = () => {
         
         <ul className='ml-auto hidden items-center md:flex'>
           <li>
+            <a href="/#about" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="/#skills" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+              Skills
+            </a>
+          </li>
+          <li>
+            <a href="/#education" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+              Education
+            </a>
+          </li>
+          <li>
+            <a href="/#projects" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="/#contact" className="inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline">
+              Contact
+            </a>
+          </li>
+          {/* <li>
             <Link href='/#about'>
               <a className='inline-block px-4 font-semibold transition-colors duration-300 hover:text-primary-600 hover:underline'>
                 About
@@ -58,7 +83,7 @@ const Menu = () => {
                 Contact
               </a>
             </Link>
-          </li>
+          </li> */}
           {/* <li>
             <Link href='/works'>
               <a
