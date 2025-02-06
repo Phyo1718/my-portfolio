@@ -32,7 +32,7 @@ type Props = {
 const WorkDetail: React.FunctionComponent<Props> = ({ work }) => {
   const router = useRouter();
   return (
-    <AppLayout title="Work Detail">
+    <AppLayout title="Project Detail">
       <div className="container">
         <div className="mt-24 flex flex-col items-center justify-center">
           {/* Back Button */}
